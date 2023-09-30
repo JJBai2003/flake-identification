@@ -1,6 +1,10 @@
+// reads in the image
 originalflakes = imread('testflake.tif');
+// convert the picture to gray scale
 originalflakesgray = rgb2gray(originalflakes);
+// binarize the image --> make the image a white object onn a black background
 BW = imbinarize(originalflakesgray);
+
 
 %Figure 1: outlining all flakes 
 [B,L,N] = bwboundaries(BW, 'noholes');
