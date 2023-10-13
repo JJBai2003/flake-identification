@@ -5,3 +5,9 @@ Steps:
 
 Imaga Analysis:
 1. transform matlab code in python 
+
+
+
+
+Resources:
+1. connects to camera/motor: https://github.com/qpit/thorlabs_apt 
