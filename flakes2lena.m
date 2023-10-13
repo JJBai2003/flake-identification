@@ -1,29 +1,29 @@
-// reads in the image
+%reads in the image
 originalflakes = imread('testflake.tif');
-// convert the picture to gray scale
+%convert the picture to gray scale
 originalflakesgray = rgb2gray(originalflakes);
-// binarize the image --> make the image a white object onn a black background
+%binarize the image --> make the image a white object onn a black background
 BW = imbinarize(originalflakesgray);
 
 
-%Figure 1: outlining all flakes 
+%Figure 1: outlining all flakes
 [B,L,N] = bwboundaries(BW, 'noholes');
 Fig = figure;
 %imshow(label2rgb(L,@jet, [0.5,0.5,0.5]));
 subplot(2,2,1);
-imshow(originalflakes); 
+imshow(originalflakes);
 hold on
 for k = 1:length(B)
     boundary = B{k};
     plot(boundary(:,2), boundary(:,1), 'c', 'LineWidth', 2)
-end 
+end
 
 %Figure 2: finding centroids of all flake pieces
 %areas are set to remove any residue or dirt pieces picked up
 flakearea = bwarea(BW);
 subplot(2,2,2);
 %both of these work just need to change the 300 or 500 depending on what
-%flake size we want to start with 
+%flake size we want to start with
 %BW2 = bwareafilt(BW,[500 50000]);
 BW2 = bwareaopen(BW,300);
 s = regionprops("table", BW2, 'centroid', 'area');
@@ -39,7 +39,7 @@ plot(centroids(:,1),centroids(:,2),'m*');
 % areahistogram = histogram(areastats.Area)
 % %plot(areahistogram);
 
-%Figure 4: Colored outlines of good and bad flakes based on areas  
+%Figure 4: Colored outlines of good and bad flakes based on areas
 subplot(2,2,4);
 %can change out the areafilt ranges once dimensions are known
 BW3 = bwareafilt(BW,[0 2000]);
@@ -51,10 +51,10 @@ hold on
 for k = 1:length(B3)
     boundary = B3{k};
     plot(boundary(:,2), boundary(:,1), 'r', 'LineWidth', 2)
-end 
+end
 for k = 1:length(B4)
     boundary = B4{k};
     plot(boundary(:,2), boundary(:,1), 'g', 'LineWidth', 2)
-end 
+end
 
 saveas(Fig, 'endflakes.png');

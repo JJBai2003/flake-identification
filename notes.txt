@@ -1,0 +1,7 @@
+Steps:
+1. connect camera to python
+2. write raster scan code
+3. camera control + stage control
+
+Imaga Analysis:
+1. transform matlab code in python 
