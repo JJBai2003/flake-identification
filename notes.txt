@@ -11,3 +11,9 @@ Imaga Analysis:
 
 Resources:
 1. connects to camera/motor: https://github.com/qpit/thorlabs_apt 
+
+
+Observations:
+1. the cv countour is not very accurate even after trying to tune the hyperparameters
+2. Even so, each image will have its own set of hyperparameters that works well. This is a problem with generalization with other images.
+2. Next step might be exploring ways to preprocess the images trying to make it work better

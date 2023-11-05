@@ -1,5 +1,5 @@
 %reads in the image
-originalflakes = imread('testflake.tif');
+originalflakes = imread('10X_example_images/im_11.bmp');
 %convert the picture to gray scale
 originalflakesgray = rgb2gray(originalflakes);
 %binarize the image --> make the image a white object onn a black background
